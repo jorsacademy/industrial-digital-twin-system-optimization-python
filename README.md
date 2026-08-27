@@ -326,6 +326,36 @@ python industrial_compressed_air_digital_twin.py \
   --periods 8
 ```
 
+## Validated GitHub Actions run
+
+The complete workflow was executed on GitHub Actions with Python 3.12.14. Dependency installation, the digital-twin self-test, all seven regression tests, and the full 24-period machine-to-system optimization completed successfully.
+
+GitHub-runner result:
+
+```text
+C1 degradation estimate       1.0551
+C1 held-out RMSE              2.205 kW
+C2 degradation estimate       1.1028
+C2 held-out RMSE              2.123 kW
+C3 degradation estimate       1.1902
+C3 held-out RMSE              1.618 kW
+
+MILP status                   OPTIMAL
+estimated objective           $655.14
+true-physics replay cost      $654.06
+true energy                   4,566.6 kWh
+shortage                      0 Nm3
+vent                          0 Nm3
+final storage                 700.0 Nm3
+
+rule baseline replay cost     $722.29
+rule baseline energy          4,640.6 kWh
+rule baseline vent            134.4 Nm3
+modeled replay difference     $68.23
+```
+
+These are reproducible results for the declared synthetic fixture and seed. They are not field measurements or a real-plant savings estimate.
+
 ## Exactness versus digital-twin uncertainty
 
 The SciPy/HiGHS MILP is exact for the declared calibrated mixed-integer dispatch problem when it returns `OPTIMAL`.
